@@ -169,8 +169,10 @@ class Main(Base):
 
                     self.graph_canva.create_line(location[i][0]+7, location[i][1]+7, location[j][0]+7+x,location[j][1]+7+y, arrow=LAST, fill='white', )
 
-        for x,y in location:
+        for i  in range(self.dimension):
+            x,y = location[i]
             self.graph_canva.create_oval(x,y, x+15, y+15, fill='white', outline='black')
+            self.graph_canva.create_text(x+7, y+7, text=f'{i+1}', fill='black')
 
         components = get_strongly_connectec_components(nodes)
 
@@ -205,8 +207,12 @@ class Main(Base):
                             q.append(e)
                             v[e]=1
 
-        for x,y in location:
+        for i  in range(self.dimension):
+            x,y = location[i]
             self.components_canva.create_oval(x,y, x+15, y+15, fill='white', outline='black')
+            self.components_canva.create_text(x+7, y+7, text=f'{i+1}', fill='black')
+
+
 
         self.label_ans.config(text=f'{len(components)}')
     def ShowProcess(self):
