@@ -20,7 +20,7 @@ class button():
         self.x=x
         self.y=y
         self.active = False
-        self.widget.place(x=0, y=0)
+        self.widget.place(x=1, y=1)
 
     def click(self):
         self.active ^= 1
@@ -120,8 +120,8 @@ class Main(Base):
         self.clear_button.place(x=20, y= n*25 + 160)
         self.generate_random.place(x=80, y= n*25 + 160)
         self.create_button.place(x=160, y= n*25 + 160)
-        self.process_button.place(x = 200, y =n*25 +160)
-        self.manual_button.place( x = 220, y = n*25 + 160 )
+        self.process_button.place(x = 240, y =n*25 +160)
+        self.manual_button.place( x = 320, y = n*25 + 160 )
         self.dimension=n
         for i in range(15):
             for j in range(15):
