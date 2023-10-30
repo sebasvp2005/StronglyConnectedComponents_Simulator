@@ -71,25 +71,30 @@ class Matrix_Operator:
             count =0
             for e in matrix[i]:
                 if e == True: count+=1
-            ans[i] = [-count, i, matrix[i]]
-        ans.sort()
-        return ans
-    def sort_colums(self, matrix):
+            ans[i] = [count, matrix[i], i]
+        realma = [[0]*n for i in range(n)]
+        ans.sort(reverse = True)
+        for i in range(n):
+            for j in range(n):
+                realma[i][j] = ans[i][1][j]
+        yaxis = [ans[i][2] for i in range(n)]
+                
+        return [yaxis, realma]
+
+    def sort_colums(self, matrix, yaxis):
         n = len(matrix)
         newma  = [[]for i in range(n)]
-        yaxis = [matrix[i][1] for i in range(n)]
         for i in range(n):
             local = []
             count=0
             for j in range(n):
-                local.append(matrix[j][2][i])
+                local.append(matrix[j][i])
             newma[i] = local
         realma = [[0]*n for i in range(n)]
         for i in range(n):
             v = yaxis[i]
             for j in range(n):
                 realma[j][i]=newma[v][j]
-        for a in realma: print(a)
         return [yaxis, realma]
 
             
@@ -127,15 +132,14 @@ def main():
             ]
     paths = Matrix_Operator().find_all_Paths(matrix)
     for a in paths: print(a)
-    sor =  Matrix_Operator().sort_rows(paths)
-    for a in sor: print(a)
-    yaxis, ma = Matrix_Operator().sort_colums(sor)
+    yaxis, ma =  Matrix_Operator().sort_rows(paths)
+    for a in ma: print(a)
+    yaxis, ma = Matrix_Operator().sort_colums(ma, yaxis)
     ans = Matrix_Operator().find_components(ma, yaxis)
     print(ans)
 
 
 
-main()
 
     
 
