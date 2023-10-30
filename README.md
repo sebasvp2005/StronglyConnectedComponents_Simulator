@@ -1,6 +1,6 @@
 
 
-<h1>StronlyConnectedComponents_Simulator</h1>
+<h1>StronglyConnectedComponents_Simulator</h1>
 
 My project's porpuse is analyze strongly connected components in graphs by an interactive app. 
 
